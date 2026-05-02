@@ -310,7 +310,7 @@
   <div class="deadline-chip">Pixel go-live deadline: May 8, 2026</div>
 </div>
 
-<form id="tech-form" onsubmit="handleSubmit(event)">
+<form id="tech-form" action="https://formspree.io/f/mlgzdwyo" method="POST" onsubmit="handleSubmit(event)">
 <div class="form-body">
 
   <!-- SECTION 1 -->
@@ -813,11 +813,30 @@
 </div>
 
 <script>
-function handleSubmit(e) {
+async function handleSubmit(e) {
   e.preventDefault();
-  document.getElementById('tech-form').style.display = 'none';
-  document.getElementById('success-msg').style.display = 'block';
-  window.scrollTo(0, 0);
+  var form = document.getElementById('tech-form');
+  var btn  = form.querySelector('.submit-btn');
+  btn.textContent = 'Submitting…';
+  btn.disabled = true;
+  try {
+    var response = await fetch('https://formspree.io/f/mlgzdwyo', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (response.ok) {
+      form.style.display = 'none';
+      document.getElementById('success-msg').style.display = 'block';
+      window.scrollTo(0, 0);
+    } else {
+      btn.textContent = 'Submission failed — please try again';
+      btn.disabled = false;
+    }
+  } catch (err) {
+    btn.textContent = 'Network error — please try again';
+    btn.disabled = false;
+  }
 }
 
 document.querySelectorAll('.radio-option input[type="radio"]').forEach(function(radio) {
