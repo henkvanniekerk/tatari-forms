@@ -1,1 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tatari — PBG / Grande Cosmetics Brand Brief</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+  :root {
+    --black: #000000;
+    --white: #FFFFFF;
+    --yellow: #FFFF00;
+    --dark-card: #1A1A1A;
+    --gray-chip: #444444;
+    --gray-text: #999999;
+    --gray-light: #F3F3F3;
+    --green: #1DB954;
+    --red: #CC0000;
+    --amber: #CC8800;
+    --gray-limited: #666666;
+    --body-font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--body-font);
+    background: var(--white);
+    color: var(--black);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  /* HEADER */
+  .form-header {
+    background: var(--black);
+    padding: 40px 48px 36px;
+    position: relative;
+  }
+  .form-header .wordmark {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    opacity: 0.7;
+  }
+  .form-header h1 {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.15;
+    max-width: 600px;
+    margin-bottom: 8px;
+  }
+  .yellow-rule {
+    width: 60px;
+    height: 3px;
+    background: var(--yellow);
+    margin: 16px 0 20px;
+  }
+  .form-header .tagline {
+    font-size: 13px;
+    color: var(--gray-text);
+    font-style: italic;
+  }
+  .deadline-chip {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--black);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    margin-top: 20px;
+  }
+
+  /* FORM BODY */
+  .form-body {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 48px 64px;
+  }
+
+  /* SECTION */
+  .section {
+    margin-bottom: 48px;
+    border-top: 1px solid #E0E0E0;
+    padding-top: 32px;
+  }
+  .section:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .section-number {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gray-text);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .section-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--black);
+  }
+  .status-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1.5px solid var(--green);
+    color: var(--green);
+  }
+  .status-badge.pending {
+    border-color: var(--amber);
+    color: var(--amber);
+  }
+
+  /* CONFIRMED BLOCK */
+  .confirmed-block {
+    background: var(--gray-light);
+    border-left: 3px solid var(--gray-chip);
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    font-size: 12px;
+    color: var(--gray-limited);
+  }
+  .confirmed-block strong {
+    color: var(--black);
+    font-weight: 600;
+  }
+
+  /* FIELD */
+  .field-group {
+    margin-bottom: 20px;
+  }
+  .field-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 6px;
+    letter-spacing: 0.02em;
+  }
+  .field-label .required-mark {
+    color: var(--red);
+    margin-left: 3px;
+  }
+  .field-hint {
+    font-size: 11px;
+    color: var(--gray-text);
+    margin-bottom: 7px;
+    font-style: italic;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1.5px solid #CCCCCC;
+    background: var(--white);
+    font-family: var(--body-font);
+    font-size: 12px;
+    color: var(--black);
+    outline: none;
+    transition: border-color 0.15s;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  input:focus, textarea:focus, select:focus {
+    border-color: var(--black);
+  }
+  textarea { resize: vertical; min-height: 80px; }
+
+  /* RADIO / CHECKBOX */
+  .radio-group, .check-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .radio-option, .check-option {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    cursor: pointer;
+    padding: 8px 14px;
+    border: 1.5px solid #CCCCCC;
+    font-size: 12px;
+    font-weight: 500;
+    transition: border-color 0.15s, background 0.15s;
+    user-select: none;
+  }
+  .radio-option:hover, .check-option:hover {
+    border-color: var(--black);
+  }
+  .radio-option input, .check-option input {
+    width: auto;
+    margin: 0;
+    accent-color: var(--black);
+  }
+  .radio-option input:checked + span,
+  .check-option input:checked + span {
+    font-weight: 700;
+  }
+  input[type="radio"]:checked ~ label,
+  .radio-option:has(input:checked) {
+    border-color: var(--black);
+    background: var(--black);
+    color: var(--white);
+  }
+
+  /* GRID */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+
+  /* TABLE */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 8px;
+    font-size: 12px;
+  }
+  .data-table thead tr {
+    background: var(--black);
+    color: var(--white);
+  }
+  .data-table thead th {
+    padding: 8px 10px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+  }
+  .data-table tbody tr:nth-child(even) { background: var(--gray-light); }
+  .data-table tbody td {
+    padding: 8px 10px;
+    color: var(--black);
+    border: 1px solid #CCCCCC;
+  }
+  .source-line {
+    font-size: 10px;
+    color: var(--gray-text);
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+
+  /* INLINE FIELD ROW */
+  .inline-row {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+  }
+  .inline-row .field-group { flex: 1; margin-bottom: 0; }
+
+  /* CALLOUT */
+  .callout {
+    border-left: 4px solid var(--yellow);
+    padding: 12px 16px;
+    background: var(--gray-light);
+    margin-bottom: 20px;
+    font-size: 12px;
+  }
+  .callout strong { display: block; font-size: 13px; margin-bottom: 4px; }
+
+  /* DIVIDER */
+  .divider {
+    border: none;
+    border-top: 1px solid #E0E0E0;
+    margin: 24px 0;
+  }
+
+  /* SUBMIT */
+  .form-footer {
+    background: var(--black);
+    padding: 40px 48px;
+  }
+  .submit-btn {
+    background: var(--yellow);
+    color: var(--black);
+    border: none;
+    padding: 14px 40px;
+    font-family: var(--body-font);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: opacity 0.15s;
+    display: inline-block;
+  }
+  .submit-btn:hover { opacity: 0.85; }
+  .footer-note {
+    font-size: 11px;
+    color: var(--gray-text);
+    margin-top: 12px;
+    font-style: italic;
+  }
+
+  /* SUCCESS */
+  #success-msg {
+    display: none;
+    background: var(--black);
+    color: var(--white);
+    padding: 40px 48px;
+    text-align: center;
+  }
+  #success-msg h2 { font-size: 24px; margin-bottom: 8px; }
+  #success-msg p { color: var(--gray-text); font-size: 13px; }
+
+  @media (max-width: 600px) {
+    .form-header, .form-body, .form-footer { padding: 28px 20px; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .form-header h1 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="form-header">
+  <div class="wordmark">TATARI</div>
+  <h1>PBG / Grande Cosmetics<br>Brand Brief</h1>
+  <div class="yellow-rule"></div>
+  <div class="tagline">8 quick confirms needed — most items pre-filled from prior conversations.</div>
+  <div class="deadline-chip">Reply deadline: May 8, 2026</div>
+</div>
+
+<form id="brand-brief-form" action="https://formspree.io/f/xdabklrd" method="POST" onsubmit="handleSubmit(event)">
+<div class="form-body">
+
+  <!-- SECTION 1 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <span class="section-title">Brand snapshot</span>
+      <span class="status-badge">✓ Confirmed</span>
+    </div>
+    <div class="confirmed-block">
+      <strong>No action needed.</strong> All items below are confirmed from prior calls and public records.<br><br>
+      Legal entity: <strong>Grande Cosmetics, LLC</strong> &nbsp;|&nbsp;
+      HQ: <strong>White Plains, NY</strong> &nbsp;|&nbsp;
+      Website: <strong>grandecosmetics.com (Shopify Plus)</strong> &nbsp;|&nbsp;
+      Ownership: <strong>Performance Beauty Group → Gauge Capital (PE)</strong>
+    </div>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <span class="section-title">Key stakeholders</span>
+      <span class="status-badge pending">3 contacts needed</span>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>Name</th><th>Role</th><th>Email</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Evelyn Valenzuela</td><td>Dir. Performance Marketing – Lash Division (PBG)</td><td>evelyn@lillylashes.com</td></tr>
+        <tr><td>Brooke Miller</td><td>Dir. Paid Media (PBG)</td><td>bmiller@performance-beauty.com</td></tr>
+        <tr><td>Marwan Zreik</td><td>CRO (PBG)</td><td>mzreik@performance-beauty.com</td></tr>
+        <tr><td>Sabeen Mian</td><td>Brand President, Grande Cosmetics</td><td><em>see below</em></td></tr>
+        <tr><td>Alicia Grande</td><td>Chief Visionary Officer</td><td>alicia@grandecosmetics.com</td></tr>
+        <tr><td>Ashley Holtquist</td><td>Grande Cosmetics (role TBC)</td><td>aholtquist@grandecosmetics.com</td></tr>
+      </tbody>
+    </table>
+    <p class="source-line">Source: Prior calls and email threads, April 2026</p>
+
+    <div class="callout">
+      <strong>Who are Emily and Chelsea?</strong>
+      We see emily@grandecosmetics.com and chelsea@grandecosmetics.com looped into threads — please confirm their roles below.
+    </div>
+
+    <div class="grid-3">
+      <div class="field-group">
+        <label class="field-label">E-Commerce / DTC lead — name<span class="required-mark">*</span></label>
+        <div class="field-hint">Is this Emily or Chelsea?</div>
+        <input type="text" name="ecomm_name" placeholder="Full name">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Title<span class="required-mark">*</span></label>
+        <input type="text" name="ecomm_title" placeholder="Job title">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Email<span class="required-mark">*</span></label>
+        <input type="email" name="ecomm_email" placeholder="email@grandecosmetics.com">
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="grid-2">
+      <div class="field-group">
+        <label class="field-label">Billing contact — name<span class="required-mark">*</span></label>
+        <div class="field-hint">First invoice due June 4</div>
+        <input type="text" name="billing_name" placeholder="Full name">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Billing contact — email<span class="required-mark">*</span></label>
+        <input type="email" name="billing_email" placeholder="email@">
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="grid-2">
+      <div class="field-group">
+        <label class="field-label">Legal / contract notice contact — name<span class="required-mark">*</span></label>
+        <div class="field-hint">For PAO paperwork — needed by May 8</div>
+        <input type="text" name="legal_name" placeholder="Full name">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Legal contact — email<span class="required-mark">*</span></label>
+        <input type="email" name="legal_email" placeholder="email@">
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="grid-2">
+      <div class="field-group">
+        <label class="field-label">Sabeen Mian's email<span class="required-mark">*</span></label>
+        <div class="field-hint">Brand President — should she be looped in on campaign comms?</div>
+        <input type="email" name="sabeen_email" placeholder="email@grandecosmetics.com">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Loop Sabeen in on campaign comms?<span class="required-mark">*</span></label>
+        <div class="radio-group" style="margin-top:8px">
+          <label class="radio-option"><input type="radio" name="sabeen_loop" value="Yes"><span>Yes</span></label>
+          <label class="radio-option"><input type="radio" name="sabeen_loop" value="No"><span>No</span></label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <span class="section-title">Campaign</span>
+      <span class="status-badge pending">1 item to lock</span>
+    </div>
+
+    <div class="confirmed-block">
+      <strong>Confirmed — no action on items below.</strong><br>
+      Launch date: <strong>June 16, 2026</strong> &nbsp;|&nbsp;
+      Pilot budget: <strong>$150K over 4 weeks ($37.5K/week)</strong> &nbsp;|&nbsp;
+      Channel split: <strong>70% streaming / 30% linear</strong><br>
+      Post-pilot estimate: <strong>$200K–$300K/month July–Sept</strong>; <strong>$300K–$450K/month Q4</strong> — subject to performance readout at weeks 5–6
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Does expanding beyond the pilot budget require Gauge Capital sign-off?<span class="required-mark">*</span></label>
+      <div class="radio-group" style="margin-top:8px">
+        <label class="radio-option"><input type="radio" name="gauge_signoff" value="Yes"><span>Yes</span></label>
+        <label class="radio-option"><input type="radio" name="gauge_signoff" value="No"><span>No</span></label>
+        <label class="radio-option"><input type="radio" name="gauge_signoff" value="Unsure"><span>Unsure</span></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <span class="section-title">Creative</span>
+      <span class="status-badge pending">3 items outstanding</span>
+    </div>
+
+    <div class="confirmed-block">
+      <strong>Confirmed:</strong> Formats: 15s and 30s only (no 60s) &nbsp;|&nbsp; Filming underway as of March 12
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Current creative status<span class="required-mark">*</span></label>
+      <div class="field-hint">We need trafficking-ready assets by May 22 for pre-QA. Network approval takes 2 weeks from there.</div>
+      <div class="radio-group" style="margin-top:8px; flex-wrap:wrap">
+        <label class="radio-option"><input type="radio" name="creative_status" value="Still in production"><span>Still in production</span></label>
+        <label class="radio-option"><input type="radio" name="creative_status" value="Complete"><span>Complete</span></label>
+      </div>
+    </div>
+    <div class="field-group">
+      <label class="field-label">If still in production — ETA</label>
+      <input type="text" name="creative_eta" placeholder="e.g., May 10, 2026">
+    </div>
+
+    <hr class="divider">
+
+    <div class="field-group">
+      <label class="field-label">Creative concept<span class="required-mark">*</span></label>
+      <div class="field-hint">Briefly describe the primary format and message (e.g., before/after lash results, lifestyle, spokesperson, UGC-style)</div>
+      <textarea name="creative_concept" placeholder="Describe the concept..."></textarea>
+    </div>
+
+    <hr class="divider">
+
+    <div class="field-group">
+      <label class="field-label">Production owner<span class="required-mark">*</span></label>
+      <div class="radio-group" style="margin-top:8px">
+        <label class="radio-option"><input type="radio" name="production_owner" value="In-house"><span>In-house</span></label>
+        <label class="radio-option"><input type="radio" name="production_owner" value="External"><span>External partner</span></label>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="field-group">
+        <label class="field-label">External partner name (if applicable)</label>
+        <input type="text" name="production_partner_name" placeholder="Partner / agency name">
+      </div>
+      <div class="field-group">
+        <label class="field-label">External partner contact (if applicable)</label>
+        <input type="email" name="production_partner_contact" placeholder="email@">
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Note on UGC assets</strong>
+      Existing Meta/TikTok UGC may be adaptable for CTV. If you want us to review those assets, share them and we can advise.
+    </div>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">05</span>
+      <span class="section-title">Measurement</span>
+      <span class="status-badge pending">2 items to clarify</span>
+    </div>
+
+    <div class="confirmed-block">
+      <strong>Confirmed approach:</strong> Tatari pixel + Baseline-Lift + DragFactor™ cross-channel. Streaming view-through + DragFactor at the $150K level. Retail geo-holdout studies unlock at $150K+ / 12+ weeks.
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Agility CTV status<span class="required-mark">*</span></label>
+      <div class="field-hint">We have you running ~$40K/month on Agility</div>
+      <div class="radio-group" style="margin-top:8px">
+        <label class="radio-option"><input type="radio" name="agility_status" value="Still active"><span>Still active (~$40K/month)</span></label>
+        <label class="radio-option"><input type="radio" name="agility_status" value="Being wound down"><span>Being wound down</span></label>
+        <label class="radio-option"><input type="radio" name="agility_status" value="Consolidating to Tatari"><span>Consolidating to Tatari</span></label>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="field-group">
+      <label class="field-label">Gauge Capital ROAS / CPA thresholds<span class="required-mark">*</span></label>
+      <div class="field-hint">Are there any specific return targets required for budget continuation beyond the pilot?</div>
+      <textarea name="roas_thresholds" placeholder="Describe targets, or write: No hard thresholds — performance-driven decision" style="min-height:60px"></textarea>
+    </div>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">06</span>
+      <span class="section-title">Technical setup</span>
+      <span class="status-badge pending">2 items to confirm</span>
+    </div>
+
+    <div class="confirmed-block">
+      <strong>Confirmed:</strong> Shopify Plus &nbsp;|&nbsp; Google Analytics &nbsp;|&nbsp; Meta / Google / Amazon / TikTok / The Trade Desk
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Tag management system on grandecosmetics.com<span class="required-mark">*</span></label>
+      <div class="radio-group" style="margin-top:8px; flex-wrap:wrap">
+        <label class="radio-option"><input type="radio" name="tag_mgmt" value="Google Tag Manager"><span>Google Tag Manager</span></label>
+        <label class="radio-option"><input type="radio" name="tag_mgmt" value="Tealium"><span>Tealium</span></label>
+        <label class="radio-option"><input type="radio" name="tag_mgmt" value="None — direct pixel install"><span>None — direct pixel install</span></label>
+        <label class="radio-option"><input type="radio" name="tag_mgmt" value="Other"><span>Other</span></label>
+      </div>
+    </div>
+    <div class="field-group">
+      <label class="field-label">If other — specify</label>
+      <input type="text" name="tag_mgmt_other" placeholder="Describe your tag management setup">
+    </div>
+
+    <hr class="divider">
+
+    <div class="field-group">
+      <label class="field-label">Preferred comms channel for weekly reporting and campaign management<span class="required-mark">*</span></label>
+      <div class="radio-group" style="margin-top:8px">
+        <label class="radio-option"><input type="radio" name="comms_channel" value="Email"><span>Email</span></label>
+        <label class="radio-option"><input type="radio" name="comms_channel" value="Slack"><span>Slack</span></label>
+        <label class="radio-option"><input type="radio" name="comms_channel" value="Other"><span>Other</span></label>
+      </div>
+    </div>
+    <div class="field-group">
+      <label class="field-label">If other — specify</label>
+      <input type="text" name="comms_other" placeholder="e.g., Teams, Notion, etc.">
+    </div>
+  </div>
+
+  <!-- SECTION 7 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">07</span>
+      <span class="section-title">Seasonality</span>
+      <span class="status-badge pending">1 item</span>
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Sports tentpoles or tentpole events — interest in placing around specific programming during the June flight?<span class="required-mark">*</span></label>
+      <div class="field-hint">e.g., NBA Finals, WNBA, other</div>
+      <div class="radio-group" style="margin-top:8px">
+        <label class="radio-option"><input type="radio" name="tentpole" value="Yes"><span>Yes — specify below</span></label>
+        <label class="radio-option"><input type="radio" name="tentpole" value="No preference"><span>No preference</span></label>
+      </div>
+    </div>
+    <div class="field-group">
+      <label class="field-label">If yes — which events?</label>
+      <input type="text" name="tentpole_detail" placeholder="e.g., NBA Finals, WNBA season, etc.">
+    </div>
+  </div>
+
+  <!-- SUBMITTER -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">08</span>
+      <span class="section-title">Your details</span>
+    </div>
+    <div class="grid-3">
+      <div class="field-group">
+        <label class="field-label">Your name<span class="required-mark">*</span></label>
+        <input type="text" name="submitter_name" placeholder="Full name">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Your title</label>
+        <input type="text" name="submitter_title" placeholder="Job title">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Your email<span class="required-mark">*</span></label>
+        <input type="email" name="submitter_email" placeholder="email@">
+      </div>
+    </div>
+    <div class="field-group">
+      <label class="field-label">Anything else we should know?</label>
+      <textarea name="additional_notes" placeholder="Optional — add any context that would help the CS team"></textarea>
+    </div>
+  </div>
+
+</div><!-- /form-body -->
+
+<div class="form-footer">
+  <div style="max-width:760px; margin:0 auto;">
+    <button type="submit" class="submit-btn">Submit brand brief →</button>
+    <p class="footer-note">Deadline: May 8, 2026 — needed for PAO + billing to stay on track for June 16 launch. Questions? Contact your Tatari CS team.</p>
+  </div>
+</div>
+
+</form>
+
+<div id="success-msg">
+  <div style="max-width:760px; margin:0 auto;">
+    <div style="color:var(--yellow); font-size:11px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:16px;">TATARI</div>
+    <h2>Received — thank you.</h2>
+    <p style="margin-top:12px;">Your CS team will follow up within 1 business day. We're on track for June 16.</p>
+  </div>
+</div>
+
+<script>
+async function handleSubmit(e) {
+  e.preventDefault();
+  var form = document.getElementById('brand-brief-form');
+  var btn  = form.querySelector('.submit-btn');
+  btn.textContent = 'Submitting…';
+  btn.disabled = true;
+  try {
+    var response = await fetch('https://formspree.io/f/xdabklrd', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (response.ok) {
+      form.style.display = 'none';
+      document.getElementById('success-msg').style.display = 'block';
+      window.scrollTo(0, 0);
+    } else {
+      btn.textContent = 'Submission failed — please try again';
+      btn.disabled = false;
+    }
+  } catch (err) {
+    btn.textContent = 'Network error — please try again';
+    btn.disabled = false;
+  }
+}
+
+// Radio button selected state styling
+document.querySelectorAll('.radio-option input[type="radio"]').forEach(function(radio) {
+  radio.addEventListener('change', function() {
+    var name = this.name;
+    document.querySelectorAll('.radio-option input[name="' + name + '"]').forEach(function(r) {
+      var parent = r.closest('.radio-option');
+      if (r.checked) {
+        parent.style.background = '#000000';
+        parent.style.color = '#FFFFFF';
+        parent.style.borderColor = '#000000';
+      } else {
+        parent.style.background = '';
+        parent.style.color = '';
+        parent.style.borderColor = '';
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
